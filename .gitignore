@@ -38,3 +38,6 @@ TrueSTUDIO/USB_CAN_CONVERTER_BASIC/.settings/language.settings.xml
 .mxproject
 TrueSTUDIO/USB_CAN_CONVERTER_BASIC/.settings/language.settings.xml
 /Debug
+CMakeLists.txt.user 
+build-UCCBEmbedded-fork-stm32f042_UCCB-Debug/
+build-UCCBEmbedded-fork-stm32f042_UCCB-Release/

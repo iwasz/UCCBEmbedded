@@ -1,0 +1,123 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+SET (CMAKE_VERBOSE_MAKEFILE OFF)
+
+PROJECT (uccb)
+ENABLE_LANGUAGE (ASM-ATT)
+
+INCLUDE_DIRECTORIES(
+    "Src"
+    "Inc"
+    "Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc"
+    "Middlewares/ST/STM32_USB_Device_Library/Core/Inc"
+    "Drivers/CMSIS/Device/ST/STM32F0xx/Include"
+    "Drivers/STM32F0xx_HAL_Driver/Inc"
+    "Drivers/CMSIS/Include"
+)
+
+#add_definitions("-fstack-protector-all")
+
+# +-----------------+
+# | My code         |
+# +-----------------+
+ADD_EXECUTABLE(${CMAKE_PROJECT_NAME}.elf
+    "./startup/startup_stm32f042x6.s"
+    "./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c"
+    "./Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h"
+    "./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c"
+    "./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c"
+    "./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c"
+    "./Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h"
+    "./Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h"
+    "./Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h"
+    "./Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart_ex.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_can.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pcd_ex.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pcd.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_iwdg.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_iwdg.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pcd.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pcd_ex.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_can.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h"
+    "./Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h"
+    "./Drivers/CMSIS/Include/core_sc000.h"
+    "./Drivers/CMSIS/Include/core_cmFunc.h"
+    "./Drivers/CMSIS/Include/core_cm4.h"
+    "./Drivers/CMSIS/Include/core_cm3.h"
+    "./Drivers/CMSIS/Include/core_cm0plus.h"
+    "./Drivers/CMSIS/Include/arm_const_structs.h"
+    "./Drivers/CMSIS/Include/arm_common_tables.h"
+    "./Drivers/CMSIS/Include/core_sc300.h"
+    "./Drivers/CMSIS/Include/cmsis_armcc.h"
+    "./Drivers/CMSIS/Include/cmsis_armcc_V6.h"
+    "./Drivers/CMSIS/Include/core_cm7.h"
+    "./Drivers/CMSIS/Include/core_cmInstr.h"
+    "./Drivers/CMSIS/Include/arm_math.h"
+    "./Drivers/CMSIS/Include/cmsis_gcc.h"
+    "./Drivers/CMSIS/Include/core_cm0.h"
+    "./Drivers/CMSIS/Include/core_cmSimd.h"
+    "./Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h"
+    "./Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f042x6.h"
+    "./Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h"
+    "./Src/slcan/slcan_additional.h"
+    "./Src/slcan/slcan_additional.c"
+    "./Src/slcan/slcan.h"
+    "./Src/slcan/slcan.c"
+#    "./Src/bootloader/bootloader.c"
+    "./Src/system_stm32f0xx.c"
+    "./Src/usbd_conf.c"
+    "./Src/stm32f0xx_it.c"
+    "./Src/usbd_desc.c"
+    "./Src/usbd_cdc_if.c"
+    "./Src/main.c"
+    "./Src/stm32f0xx_hal_msp.c"
+    "./Src/usb_device.c"
+    "./Inc/usbd_desc.h"
+    "./Inc/main.h"
+    "./Inc/usbd_conf.h"
+    "./Inc/stm32f0xx_it.h"
+    "./Inc/stm32f0xx_hal_conf.h"
+    "./Inc/usb_device.h"
+    "./Inc/usbd_cdc_if.h"
+)
+
+
+FIND_PROGRAM (OPENOCD openocd)
+ADD_CUSTOM_TARGET("upload" DEPENDS ${CMAKE_PROJECT_NAME}.elf COMMAND ${OPENOCD} -f /home/iwasz/local/share/openocd/scripts/interface/stlink.cfg -f /home/iwasz/local/share/openocd/scripts/target/stm32f0x.cfg -c 'program ${CMAKE_PROJECT_NAME}.elf verify reset exit')
+ADD_CUSTOM_TARGET("debug" DEPENDS ${CMAKE_PROJECT_NAME}.elf COMMAND ${OPENOCD} -f /home/iwasz/local/share/openocd/scripts/interface/stlink.cfg -f /home/iwasz/local/share/openocd/scripts/target/stm32f0x.cfg)
+
+ADD_CUSTOM_TARGET(${CMAKE_PROJECT_NAME}.bin ALL DEPENDS ${CMAKE_PROJECT_NAME}.elf COMMAND ${CMAKE_OBJCOPY} -Obinary ${CMAKE_PROJECT_NAME}.elf ${CMAKE_PROJECT_NAME}.bin)

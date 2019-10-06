@@ -199,7 +199,7 @@ static uint8_t transmitStd(uint8_t* line) {
     }
 
     HAL_NVIC_DisableIRQ(CEC_CAN_IRQn);
-    tr = HAL_CAN_Transmit(&hcan, 0);
+    tr = HAL_CAN_Transmit(&hcan, 1000);
     HAL_NVIC_EnableIRQ(CEC_CAN_IRQn);
     return tr;
 }
@@ -431,7 +431,7 @@ uint8_t slCanCheckCommand(uint8_t *line)
         		 line[1] = 0;
         		 line[2] = 0;
         		 line[3] = 0;
-        		 RebootToBootloader();
+//        		 RebootToBootloader();
         	 }
         	 break;
 
