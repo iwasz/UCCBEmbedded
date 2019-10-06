@@ -1,8 +1,8 @@
 SET (DEVICE "STM32F042x6")
 #SET (CUBE_ROOT "$ENV{HOME}/workspace/STM32Cube_FW_F0_V1.9.0")
 #SET (CRYSTAL_HZ 16000000)
-SET (STARTUP_CODE "/home/iwasz/workspace/UCCBEmbedded/startup/startup_stm32f042x6.s")
-SET (LINKER_SCRIPT "/home/iwasz/workspace/UCCBEmbedded/STM32F042C6_FLASH.ld")
+SET (STARTUP_CODE "/home/iwasz/workspace/UCCBEmbedded-fork/startup/startup_stm32f042x6.s")
+SET (LINKER_SCRIPT "/home/iwasz/workspace/UCCBEmbedded-fork/STM32F042C6_FLASH.ld")
 
 SET (CMAKE_SYSTEM_NAME Generic)
 SET (CMAKE_SYSTEM_PROCESSOR arm)
